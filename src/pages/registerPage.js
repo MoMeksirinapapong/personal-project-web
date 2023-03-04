@@ -2,59 +2,17 @@ import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import React, { useState } from "react";
-import styled from "styled-components";
+// import styled  from 'styled-components';
 import AuthContainer from "../Layout/AuthContainer";
 import Input from "../components/Input";
 import validateRegister from "../validators/validate-register";
 import * as authApi from "../apis/auth-api";
+import MobileLayout from "../layouts/MobileLayout";
+import Dark from "../assets/dark.jpg";
+import Olive from "../assets/olive.png";
+import Tubb from "../assets/tubb.png";
+import Basil from "../assets/basil.png";
 
-const RegisterStyle = styled.div`
-  border: 1px solid white;
-  height: 70%;
-  width: 20%;
-  padding: 5rem;
-
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    padding: 5 rem;
-  }
-  .auth-form-container {
-    padding: 5 rem;
-    border: 1px solid white;
-    border-radius: 10 px;
-    margin: 0.5 rem;
-  }
-  label {
-    text-align: left;
-    padding: 0.25 rem 0;
-  }
-  input {
-    margin: 0.5 rem 0;
-    padding: 1 rem;
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    margin-bottom: 10px;
-  }
-  button {
-    border: none;
-    background-color: white;
-    /* padding: 20 ; */
-    border-radius: 5px;
-    cursor: pointer;
-    color: #7439db;
-    height: 50px;
-  }
-  .link-btn {
-    background: none;
-    color: white;
-    text-decoration: underline;
-  }
-  label {
-    margin-top: 5px;
-  }
-`;
 const initialInput = {
   fullname: "",
   email: "",
@@ -95,14 +53,24 @@ export default function RegisterPage() {
 
   return (
     <>
-      {!complete || <Navigate to="/login" />}
-      <AuthContainer>
-        <RegisterStyle className="auth-form-container">
-          <form className="register-form" onSubmit={handleSubmitForm}>
-            <h1>Register</h1>
-            <label htmlFor="name">
-              <p>FULL NAME</p>
-            </label>
+      <div className="w-[390px] h-[845px] rounded-3xl static ">
+        <img className="w-[390px] h-[845px]" src={Dark} alt="" />
+        <div className="w-[250px] absolute top-0 ml-36 -mt-16 -rotate-12">
+          <img src={Olive} alt="" />
+        </div>
+        {!complete || <Navigate to="/login" />}
+        <div className="text-[24px] font-serif absolute top-0 text-white mt-40 ml-20 py-5 opacity-70">
+          {" "}
+          Register
+        </div>
+        <div className="w-[300px] h-[400px] absolute top-10 text-center mt-44 border rounded-3xl ml-10 opacity-70 font-serif z-10">
+          <form
+            className="register-form text-white"
+            onSubmit={handleSubmitForm}
+          >
+            <div className="mt-5 mr-24 mb-2">
+              <label htmlFor="name">Full name :</label>
+            </div>
             <Input
               placeholder="Enter fullname"
               name="fullname"
@@ -110,33 +78,41 @@ export default function RegisterPage() {
               onChange={handleChangeInput}
               error={error.fullname}
             />
-
-            <label htmlFor="email">
-              <p>EMAIL :</p>
-            </label>
-            <Input
-              placeholder="Enter email"
-              name="email"
-              value={input.email}
-              onChange={handleChangeInput}
-              error={error.email}
-            />
-
-            <label htmlFor="password">
-              <p>PASSWORD :</p>
-            </label>
-            <Input
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={input.password}
-              onChange={handleChangeInput}
-              error={error.password}
-            />
-
-            <label htmlFor="password">
-              <p>CONFIRMED PASSWORD :</p>
-            </label>
+            <div className="mt-4">
+              <label className=" mr-32 mb-2" htmlFor="email">
+                Email :
+              </label>
+            </div>
+            <div>
+              <Input
+                placeholder="Enter email"
+                name="email"
+                value={input.email}
+                onChange={handleChangeInput}
+                error={error.email}
+              />
+            </div>
+            <div className="mt-4 mr-24">
+              <label className="mb-2" htmlFor="password">
+                <p>Password :</p>
+              </label>
+            </div>
+            <div>
+              {" "}
+              <Input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={input.password}
+                onChange={handleChangeInput}
+                error={error.password}
+              />
+            </div>
+            <div className="mr-4 mt-5">
+              <label className="mb-2 " htmlFor="password">
+                Confirmed Password :
+              </label>
+            </div>
             <Input
               type="password"
               placeholder="Confirmed password"
@@ -146,11 +122,27 @@ export default function RegisterPage() {
               name="conpass"
             />
             <br></br>
-            <button type="submit">Register</button>
-            <Link to="/login">Already have an account?</Link>
+
+            <button
+              className="border rounded w-[100px] mt-8 hover:bg-gray-500"
+              type="submit"
+            >
+              Register
+            </button>
+            <div className="mt-5 underline hover:text-gray-500">
+              <Link to="/login">Already have an account?Login!</Link>
+            </div>
           </form>
-        </RegisterStyle>
-      </AuthContainer>
+        </div>
+
+        <div className="absolute -mt-32 ml-2">
+          <img
+            className="w-[250px] h-[280px] -mt-44 rotate-12 z-0"
+            src={Tubb}
+            alt=""
+          />
+        </div>
+      </div>
     </>
   );
 }

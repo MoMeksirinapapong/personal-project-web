@@ -5,7 +5,7 @@ import React, { useState } from "react";
 // import styled from "styled-components";
 // import AuthContainer from "../Layout/AuthContainer";
 import useAuth from "../hooks/useAuth";
-import Dark from "../assets/dark.jpeg";
+import Dark from "../assets/dark.jpg";
 import { Outlet } from "react-router-dom";
 import Firstdish from "../assets/firstdish.png";
 import Wine from "../assets/wine.png";
@@ -81,7 +81,7 @@ export default function LoginPage() {
           </div>
         </form>
       </div>
-      <div className="w-[290px] absolute right-32 top-96 opacity-90 z-0">
+      <div className="w-[290px] absolute right-32 top-96  z-0 mr-6">
         <img src={Wine} alt="" />
       </div>
 
