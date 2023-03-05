@@ -30,9 +30,13 @@ export default function LoginPage() {
   };
   return (
     <div className="w-[390px] h-[845px] mx-auto border-white static">
-      <img className="w-[390px] h-[845px] rounded-3xl" src={Dark} alt="" />
+      <img className="w-[390px] h-[845px] rounded-3xl " src={Dark} alt="" />
       <div className="space-x-1.5">
-        <img className="w-[250px] absolute -top-2 z-20 " src={Firstdish} />
+        <img
+          className="w-[250px] absolute -top-2 z-20"
+          src={Firstdish}
+          alt=""
+        />
         <div className="text-[24px] text-white px-60 mt-1 absolute top-52 z-30 font-serif opacity-80">
           <h1>Login</h1>
         </div>
@@ -81,8 +85,8 @@ export default function LoginPage() {
           </div>
         </form>
       </div>
-      <div className="w-[290px] absolute right-32 top-96  z-0 mr-6">
-        <img src={Wine} alt="" />
+      <div className="w-[250px] -mt-96 ml-32  z-0 mr-6">
+        <img className="" src={Wine} alt="" />
       </div>
 
       <Outlet />
