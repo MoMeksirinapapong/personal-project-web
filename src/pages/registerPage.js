@@ -1,9 +1,10 @@
-import { Navigate } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Navigate, Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+
 import React, { useState } from "react";
 // import styled  from 'styled-components';
-import AuthContainer from "../Layout/AuthContainer";
 import Input from "../components/Input";
 import validateRegister from "../validators/validate-register";
 import * as authApi from "../apis/auth-api";
@@ -11,7 +12,6 @@ import MobileLayout from "../layouts/MobileLayout";
 import Dark from "../assets/dark.jpg";
 import Olive from "../assets/olive.png";
 import Tubb from "../assets/tubb.png";
-import Basil from "../assets/basil.png";
 
 const initialInput = {
   fullname: "",
@@ -53,32 +53,39 @@ export default function RegisterPage() {
 
   return (
     <>
-      <div className="w-[390px] h-[845px] rounded-3xl static ">
+      <div className="w-[390px] h-[845px] border rounded-3xl static ">
         <img className="w-[390px] h-[845px]" src={Dark} alt="" />
+        <div className="absolute top-5 ml-5 text-white opacity-80">
+          <Link to="/">
+            <ArrowBackIcon color="white" fontSize="large" />
+          </Link>
+        </div>
         <div className="w-[250px] absolute top-0 ml-36 -mt-16 -rotate-12">
           <img src={Olive} alt="" />
         </div>
         {!complete || <Navigate to="/login" />}
-        <div className="text-[24px] font-serif absolute top-0 text-white mt-40 ml-20 py-5 opacity-70">
+        <div className="text-[24px] font-serif absolute top-0 text-white mt-40 ml-20 py-5 opacity-70 text-white">
           {" "}
           Register
         </div>
-        <div className="w-[300px] h-[400px] absolute top-10 text-center mt-44 border rounded-3xl ml-10 opacity-70 font-serif z-10">
+        <div className="w-[300px] h-[510px] absolute top-10 text-center mt-44 border rounded-3xl ml-10 opacity-70 font-serif z-10">
           <form
-            className="register-form text-white"
+            className="register-form text-black"
             onSubmit={handleSubmitForm}
           >
-            <div className="mt-5 mr-24 mb-2">
+            <div className="mt-5 mr-24 mb-2 text-white">
               <label htmlFor="name">Full name :</label>
             </div>
-            <Input
-              placeholder="Enter fullname"
-              name="fullname"
-              value={input.fullname}
-              onChange={handleChangeInput}
-              error={error.fullname}
-            />
-            <div className="mt-4">
+            <div className="text-black">
+              <Input
+                placeholder="Enter fullname"
+                name="fullname"
+                value={input.fullname}
+                onChange={handleChangeInput}
+                error={error.fullname}
+              />
+            </div>
+            <div className="mt-4 text-white">
               <label className=" mr-32 mb-2" htmlFor="email">
                 Email :
               </label>
@@ -92,7 +99,7 @@ export default function RegisterPage() {
                 error={error.email}
               />
             </div>
-            <div className="mt-4 mr-24">
+            <div className="mt-4 mr-24 text-white">
               <label className="mb-2" htmlFor="password">
                 <p>Password :</p>
               </label>
@@ -108,7 +115,7 @@ export default function RegisterPage() {
                 error={error.password}
               />
             </div>
-            <div className="mr-4 mt-5">
+            <div className="mr-4 mt-5 text-white">
               <label className="mb-2 " htmlFor="password">
                 Confirmed Password :
               </label>
@@ -124,12 +131,12 @@ export default function RegisterPage() {
             <br></br>
 
             <button
-              className="border rounded w-[100px] mt-8 hover:bg-gray-500"
+              className="border rounded w-[100px] mt-8 hover:bg-gray-500 text-white"
               type="submit"
             >
               Register
             </button>
-            <div className="mt-5 underline hover:text-gray-500">
+            <div className="mt-5 underline hover:text-gray-500 text-white">
               <Link to="/login">Already have an account?Login!</Link>
             </div>
           </form>

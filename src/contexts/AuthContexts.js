@@ -1,14 +1,33 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import * as authApi from "../apis/auth-api";
-import { getAccessToken, setAccessToken } from "../util/local-storage";
+import {
+  getAccessToken,
+  setAccessToken,
+  removeAccessToken,
+} from "../util/local-storage";
 
 export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
   const [authenticatedUser, setAuthenticatedUser] = useState(
     // default page will be /
+
     getAccessToken() ? true : null
   );
+
+  useEffect(() => {
+    const fetchAuthGetMe = async () => {
+      try {
+        const res = await authApi.getMe();
+        // #if token expire it will throw error
+        console.log("set userrrrrrrrrrr");
+        setAuthenticatedUser(res.data.user);
+      } catch (err) {
+        removeAccessToken();
+      }
+    };
+    fetchAuthGetMe();
+  }, []);
 
   const login = async (email, password) => {
     // this f. will send req to server

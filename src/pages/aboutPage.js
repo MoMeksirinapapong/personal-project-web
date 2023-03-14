@@ -1,11 +1,19 @@
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 import Dark from "../assets/dark.jpg";
 import Spi from "../assets/spi.png";
 import Whoo from "../assets/Whoo.png";
+import { Link } from "react-router-dom";
 
 export default function AboutPage() {
   return (
     <div>
       <img className="w-[390px] h-[845px] static" src={Dark} alt="" />
+      <div className="absolute top-5 ml-5 text-white opacity-80 z-10 hover:text-gray-500">
+        <Link to="/">
+          <ArrowBackIcon color="white" fontSize="large" />
+        </Link>
+      </div>
       <div className="font-serif text-[30px] text-white absolute top-0 mt-20 ml-52 z-10">
         About
       </div>

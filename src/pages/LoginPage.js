@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 // import Joi from 'joi';
 import React, { useState } from "react";
@@ -13,6 +15,7 @@ import Wine from "../assets/wine.png";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const navigate = useNavigate();
 
   const { login } = useAuth();
 
@@ -22,6 +25,7 @@ export default function LoginPage() {
       await login(email, pass);
       // login success
       toast.success("success login");
+      navigate("/");
     } catch (err) {
       // login failed
       console.log(err);
@@ -30,7 +34,15 @@ export default function LoginPage() {
   };
   return (
     <div className="w-[390px] h-[845px] mx-auto border-white static">
+      <div className="absolute top-5 ml-5 text-white opacity-80 z-30 hover:text-gray-500">
+        <Link to="/">
+          <button>
+            <ArrowBackIcon color="white" fontSize="large" />
+          </button>
+        </Link>
+      </div>
       <img className="w-[390px] h-[845px] rounded-3xl " src={Dark} alt="" />
+
       <div className="space-x-1.5">
         <img
           className="w-[250px] absolute -top-2 z-20"
